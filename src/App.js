@@ -86,22 +86,38 @@ function App() {
         transition={{ duration: 0.8 }}
       >
         <div className="header-content">
-          <motion.h1 
-            className="photographer-name"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            Luana Furtado
-          </motion.h1>
-          <motion.p 
-            className="photographer-title"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            Fotógrafa Artística
-          </motion.p>
+          <div className="header-profile">
+            <motion.div 
+              className="profile-image-container"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              <img 
+                src={foto8} 
+                alt="Luana Furtado" 
+                className="profile-image"
+              />
+            </motion.div>
+            <div className="header-text">
+              <motion.h1 
+                className="photographer-name"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                Luana Furtado
+              </motion.h1>
+              <motion.p 
+                className="photographer-title"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              >
+                Fotógrafa Artística
+              </motion.p>
+            </div>
+          </div>
         </div>
       </motion.header>
 
