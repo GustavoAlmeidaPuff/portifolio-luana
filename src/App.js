@@ -222,7 +222,8 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Contact Section */}
+      {/* Contact Section - COMENTADO TEMPORARIAMENTE */}
+      {/*
       <motion.section 
         className="contact-section"
         initial={{ opacity: 0 }}
@@ -303,6 +304,7 @@ function App() {
           </motion.div>
         </div>
       </motion.section>
+      */}
 
       {/* Footer */}
       <motion.footer 
