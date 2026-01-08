@@ -346,6 +346,7 @@ function App() {
       {/* Header */}
       <motion.header 
         className="header"
+        style={{ backgroundImage: `url(${foto10})` }}
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
