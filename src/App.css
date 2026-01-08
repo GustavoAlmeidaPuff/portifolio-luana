@@ -169,7 +169,7 @@ body {
 }
 
 .gallery {
-  column-count: 2;
+  column-count: 3;
   column-gap: 3rem;
   padding: 0;
 }
