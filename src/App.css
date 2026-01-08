@@ -169,21 +169,22 @@ body {
 }
 
 .gallery {
-  column-count: 4;
-  column-gap: 2rem;
+  column-count: 3;
+  column-gap: 2.5rem;
   padding: 0;
 }
 
 @media (max-width: 1200px) {
   .gallery {
     column-count: 3;
+    column-gap: 2rem;
   }
 }
 
 @media (max-width: 768px) {
   .gallery {
     column-count: 2;
-    column-gap: 1rem;
+    column-gap: 1.5rem;
   }
 }
 
