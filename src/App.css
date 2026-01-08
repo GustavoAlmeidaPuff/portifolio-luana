@@ -201,29 +201,23 @@ body {
   cursor: pointer;
   background-color: #f8f8f8;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.3s ease;
   break-inside: avoid;
   margin-bottom: 2rem;
   display: inline-block;
   width: 100%;
 }
 
-.gallery-item:hover {
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-}
-
 .gallery-item img {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease;
-  will-change: transform;
-  backface-visibility: hidden;
+  transition: transform 0.5s ease;
 }
 
 .gallery-item:hover img {
   transform: scale(1.1);
 }
+
 
 .image-overlay {
   display: none;

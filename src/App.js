@@ -441,10 +441,6 @@ function App() {
                   opacity: { duration: 0.2 },
                   scale: { duration: 0.2 }
                 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  transition: { duration: 0.2 }
-                }}
                 onClick={() => openModal(foto)}
               >
                 <img 
