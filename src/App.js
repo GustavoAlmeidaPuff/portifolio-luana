@@ -171,16 +171,40 @@ function App() {
 
   const handleWheel = (e) => {
     e.preventDefault();
-    const delta = e.deltaY > 0 ? -0.1 : 0.1;
-    const newScale = Math.max(1, Math.min(scale + delta, 4));
-    setScale(newScale);
     
-    // Esconder info ao dar zoom
-    if (newScale > 1) {
-      setShowInfo(false);
-    } else {
-      setShowInfo(true);
-      setPosition({ x: 0, y: 0 });
+    const container = e.currentTarget;
+    const rect = container.getBoundingClientRect();
+    
+    // Posição do mouse no container
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    // Zoom
+    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+    const newScale = Math.max(1, Math.min(scale * delta, 4));
+    
+    if (newScale !== scale) {
+      // Centro do container
+      const containerCenterX = rect.width / 2;
+      const containerCenterY = rect.height / 2;
+      
+      // Offset do mouse em relação ao centro do container
+      const offsetX = mouseX - containerCenterX;
+      const offsetY = mouseY - containerCenterY;
+      
+      // Ajustar posição para manter o ponto do mouse fixo
+      const newX = position.x - (offsetX * (newScale - scale) / scale);
+      const newY = position.y - (offsetY * (newScale - scale) / scale);
+      
+      setScale(newScale);
+      
+      if (newScale > 1) {
+        setPosition({ x: newX, y: newY });
+        setShowInfo(false);
+      } else {
+        setPosition({ x: 0, y: 0 });
+        setShowInfo(true);
+      }
     }
   };
 
@@ -192,7 +216,13 @@ function App() {
         touch2.clientX - touch1.clientX,
         touch2.clientY - touch1.clientY
       );
-      setDragStart({ ...dragStart, pinchDistance: distance });
+      
+      setDragStart({ 
+        ...dragStart, 
+        pinchDistance: distance,
+        initialScale: scale,
+        initialPosition: { ...position }
+      });
     }
   };
 
@@ -206,18 +236,38 @@ function App() {
         touch2.clientY - touch1.clientY
       );
       
-      if (dragStart.pinchDistance) {
-        const delta = distance - dragStart.pinchDistance;
-        const newScale = Math.max(1, Math.min(scale + delta / 100, 4));
-        setScale(newScale);
-        setDragStart({ ...dragStart, pinchDistance: distance });
+      if (dragStart.pinchDistance && dragStart.initialScale) {
+        const container = e.currentTarget;
+        const rect = container.getBoundingClientRect();
         
-        // Esconder info ao dar zoom
+        // Centro do pinch
+        const centerX = (touch1.clientX + touch2.clientX) / 2 - rect.left;
+        const centerY = (touch1.clientY + touch2.clientY) / 2 - rect.top;
+        
+        // Nova escala
+        const scaleChange = distance / dragStart.pinchDistance;
+        const newScale = Math.max(1, Math.min(dragStart.initialScale * scaleChange, 4));
+        
+        // Centro do container
+        const containerCenterX = rect.width / 2;
+        const containerCenterY = rect.height / 2;
+        
+        // Offset do centro do pinch em relação ao centro do container
+        const offsetX = centerX - containerCenterX;
+        const offsetY = centerY - containerCenterY;
+        
+        // Ajustar posição
+        const newX = dragStart.initialPosition.x - (offsetX * (newScale - dragStart.initialScale) / dragStart.initialScale);
+        const newY = dragStart.initialPosition.y - (offsetY * (newScale - dragStart.initialScale) / dragStart.initialScale);
+        
+        setScale(newScale);
+        
         if (newScale > 1) {
+          setPosition({ x: newX, y: newY });
           setShowInfo(false);
         } else {
-          setShowInfo(true);
           setPosition({ x: 0, y: 0 });
+          setShowInfo(true);
         }
       }
     }
@@ -471,8 +521,8 @@ function App() {
                   alt={selectedImage.alt}
                   className="modal-image"
                   style={{
-                    transform: `scale(${scale}) translate(${position.x / scale}px, ${position.y / scale}px)`,
-                    cursor: scale > 1 ? 'grab' : 'default',
+                    transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                    cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default',
                     transition: isDragging ? 'none' : 'transform 0.1s ease-out'
                   }}
                   draggable={false}
