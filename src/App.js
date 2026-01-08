@@ -24,6 +24,25 @@ import foto18 from './midias/18.jpg';
 import foto19 from './midias/19.jpg';
 import foto20 from './midias/20.jpg';
 import foto21 from './midias/21.jpg';
+import foto22 from './midias/22.JPG';
+import foto23 from './midias/23.JPG';
+import foto24 from './midias/24.JPG';
+import foto25 from './midias/25.JPG';
+import foto26 from './midias/26.JPG';
+import foto27 from './midias/27.jpg';
+import foto28 from './midias/28.jpg';
+import foto29 from './midias/29.jpg';
+import foto30 from './midias/30.JPG';
+import foto31 from './midias/31.JPG';
+import foto32 from './midias/32.JPG';
+import foto33 from './midias/33.JPG';
+import foto34 from './midias/34.JPG';
+import foto35 from './midias/35.jpg';
+import foto36 from './midias/36.JPG';
+import foto37 from './midias/37.jpg';
+import foto38 from './midias/38.jpg';
+import foto39 from './midias/39.jpg';
+import foto40 from './midias/40.jpg';
 
 const fotos = [
   { src: foto1, alt: "Retrato 1", categoria: "retrato" },
@@ -46,6 +65,25 @@ const fotos = [
   { src: foto19, alt: "Fotografia 19", categoria: "arte" },
   { src: foto20, alt: "Fotografia 20", categoria: "arte" },
   { src: foto21, alt: "Fotografia 21", categoria: "arte" },
+  { src: foto22, alt: "Fotografia 22", categoria: "retrato" },
+  { src: foto23, alt: "Fotografia 23", categoria: "retrato" },
+  { src: foto24, alt: "Fotografia 24", categoria: "retrato" },
+  { src: foto25, alt: "Fotografia 25", categoria: "retrato" },
+  { src: foto26, alt: "Fotografia 26", categoria: "retrato" },
+  { src: foto27, alt: "Fotografia 27", categoria: "arte" },
+  { src: foto28, alt: "Fotografia 28", categoria: "arte" },
+  { src: foto29, alt: "Fotografia 29", categoria: "arte" },
+  { src: foto30, alt: "Fotografia 30", categoria: "arte" },
+  { src: foto31, alt: "Fotografia 31", categoria: "arte" },
+  { src: foto32, alt: "Fotografia 32", categoria: "arte" },
+  { src: foto33, alt: "Fotografia 33", categoria: "arte" },
+  { src: foto34, alt: "Fotografia 34", categoria: "retrato" },
+  { src: foto35, alt: "Fotografia 35", categoria: "arte" },
+  { src: foto36, alt: "Fotografia 36", categoria: "arte" },
+  { src: foto37, alt: "Fotografia 37", categoria: "arte" },
+  { src: foto38, alt: "Fotografia 38", categoria: "arte" },
+  { src: foto39, alt: "Fotografia 39", categoria: "retrato" },
+  { src: foto40, alt: "Fotografia 40", categoria: "retrato" },
 ];
 
 function App() {
